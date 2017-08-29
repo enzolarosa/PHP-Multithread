@@ -65,4 +65,9 @@ abstract class Base
      * @return boolean True upon success, false otherwise
      */
     abstract public function process(array $params = array());
+
+    protected $param=array();
+    public function setParam($param) {
+        $this->param = $param;
+    }
 }
