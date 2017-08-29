@@ -2,15 +2,15 @@
 ## Authors & contact
 
 
-Al-Fallouji Bashar 
-    - bashar@alfallouji.com
+godfery
+    - god.521@hotmail.com
 
     
 ## Documentation and download
 
 
 Latest version is available on github at :
-    - http://github.com/alfallouji/PHP-Multithread/
+    - http://github.com/godfery/PHP-Multithread/
 
 
 ## License
@@ -44,7 +44,7 @@ You can use composer to use this library.
 ```
 {
     "require": {
-		"alfallouji/php_multithread": "*"
+		"godfery/php_multithread": "*"
     }
 }
 ```
