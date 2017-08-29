@@ -1,11 +1,10 @@
 {
-	"name": "alfallouji/php_multithread",
+	"name": "godfery/php_multithread",
 	"description": "iPHP library to handle multi-threading",
 	"authors": [
 		{
-			"name": "Bashar Al-Fallouji",
-			"email": "alfallouji@gmail.com",
-			"homepage": "http://bashar.alfallouji.com",
+			"name": "godfery wang",
+			"email": "god.521@gmail.com",
 			"role": "Developer"
 		}
 	],
