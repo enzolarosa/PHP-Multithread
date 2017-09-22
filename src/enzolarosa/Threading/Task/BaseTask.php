@@ -14,54 +14,33 @@
  * See the GNU Lesser General Public License for more details.
  */
 
-namespace enzolarosa\Threading\Task;
+namespace enzolarosa;
 
-/**
- * Abstract base inherited from all tasks
- */
-abstract class Base
+abstract class BaseTask
 {
-    /**
-     * Initialize (called first by the task manager)
-     * 
-     * @return mixed
-     */
-    public function initialize() 
+
+    public function initialize()
     {
         return true;
     }
 
-    /**
-     * Called by the task manager upon sucess (when the process method returned true)
-     * 
-     * @return mixed
-     */
     public function onSuccess()
     {
         return true;
     }
 
-    /**
-     * Called by the task manager upon failure (when the process method returned false)
-     * 
-     * @return mixed
-     */
-    public function onFailure() 
+    public function onFailure()
     {
         return false;
     }
-
-    /**
-     * Main method containing the logic to be executed by the task
-     * 
-     * @param $params array Assoc array of params
-     *
-     * @return boolean True upon success, false otherwise
-     */
+    
     abstract public function process(array $params = array());
 
-    protected $param=array();
-    public function setParam($param) {
+    protected $param = array();
+
+    public function setParam($param)
+    {
         $this->param = $param;
     }
+
 }

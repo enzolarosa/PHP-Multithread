@@ -14,88 +14,55 @@
  * See the GNU Lesser General Public License for more details.
  */
 
-namespace enzolarosa\Threading;
+namespace enzolarosa;
 
-use enzolarosa\Threading\Task\Base as AbstractTask;
+use enzolarosa\BaseTask as AbstractTask;
 
-/**
- * Multi-thread / task manager
- */
-class Multiple
+class MultipleThread
 {
-    /**
-     * Assoc array of pid with active threads
-     * @var array
-     */
+
     protected $_activeThreads = array();
 
-    /**
-     * Maximum number of child threads that can be created by the parent
-     * @var int
-     */
     protected $maxThreads = 5;
 
-    /**
-     * Class constructor
-     *
-     * @param int $maxThreads Maximum number of child threads that can be created by the parent
-     */
     public function __construct($maxThreads = 5)
     {
         $this->maxThreads = $maxThreads;
     }
 
-    /**
-     * Start the task manager
-     *
-     * @param AbstractTask $task Task to start
-     *
-     * @return void
-     */
     public function start(AbstractTask $task)
     {
         $pid = pcntl_fork();
-        if ($pid == -1) 
-        {
+        if ($pid == -1) {
             throw new \Exception('[Pid:' . getmypid() . '] Could not fork process');
-        } 
-        // Parent thread
-        elseif ($pid) 
-        {
+        } // Parent thread
+        elseif ($pid) {
             $this->_activeThreads[$pid] = true;
 
             // Reached maximum number of threads allowed
-            if($this->maxThreads == count($this->_activeThreads)) 
-            {
+            if ($this->maxThreads == count($this->_activeThreads)) {
                 // Parent Process : Checking all children have ended (to avoid zombie / defunct threads)
-                while(!empty($this->_activeThreads)) 
-                {
+                while (!empty($this->_activeThreads)) {
                     $endedPid = pcntl_wait($status);
-                    if(-1 == $endedPid) 
-                    {
+                    if (-1 == $endedPid) {
                         $this->_activeThreads = array();
                     }
                     unset($this->_activeThreads[$endedPid]);
                 }
             }
-        } 
-        // Child thread
-        else 
-        {
+        } else {
             $task->initialize();
 
             // On success
-            if ($task->process())
-            {
+            if ($task->process()) {
                 $task->onSuccess();
-            } 
-            else 
-            {
+            } else {
                 $task->onFailure();
             }
-           
+
             posix_kill(getmypid(), 9);
         }
         pcntl_wait($status, WNOHANG);
     }
+
 }
