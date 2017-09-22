@@ -1,5 +1,6 @@
 {
   "name": "enzolarosa/php_multithread",
+  "version": "1.0",
   "description": "PHP library to handle multi-threading",
   "authors": [
     {
