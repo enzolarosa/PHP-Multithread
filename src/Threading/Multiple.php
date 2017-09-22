@@ -14,15 +14,9 @@
  * See the GNU Lesser General Public License for more details.
  */
 
-/**
- * File:        Multiple.php
- * Project:     PHP Multi threading
- *
- * @author      Al-Fallouji Bashar
- */
-namespace Threading;
+namespace enzolarosa\Threading;
 
-use Threading\Task\Base as AbstractTask;
+use enzolarosa\Threading\Task\Base as AbstractTask;
 
 /**
  * Multi-thread / task manager

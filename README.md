@@ -2,15 +2,15 @@
 ## Authors & contact
 
 
-godfery
-    - god.521@hotmail.com
+enzolarosa
+    - vincenzo@ctlr.it
 
     
 ## Documentation and download
 
 
 Latest version is available on github at :
-    - http://github.com/godfery/PHP-Multithread/
+    - http://github.com/enzolarosa/PHP-Multithread/
 
 
 ## License
@@ -44,7 +44,7 @@ You can use composer to use this library.
 ```
 {
     "require": {
-		"godfery/php_multithread": "*"
+		"enzolarosa/php_multithread": "*"
     }
 }
 ```

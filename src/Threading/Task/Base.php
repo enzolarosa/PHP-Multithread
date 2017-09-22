@@ -14,21 +14,15 @@
  * See the GNU Lesser General Public License for more details.
  */
 
-/**
- * File:        Task.php
- * Project:     PHP Multi threading
- *
- * @author      Al-Fallouji Bashar
- */
-namespace Threading\Task;
+namespace enzolarosa\Threading\Task;
 
 /**
  * Abstract base inherited from all tasks
  */
-class Example extends Base
+abstract class Base
 {
     /**
-     * Initialize (called first by the task manager
+     * Initialize (called first by the task manager)
      * 
      * @return mixed
      */
@@ -64,10 +58,10 @@ class Example extends Base
      *
      * @return boolean True upon success, false otherwise
      */
-    public function process(array $params = array())
-    {
-        sleep(1);
-        echo '[Pid:' . getmypid() . '] Task executed at ' . date('Y-m-d H:i:s') . PHP_EOL;
-        return true;
+    abstract public function process(array $params = array());
+
+    protected $param=array();
+    public function setParam($param) {
+        $this->param = $param;
     }
 }

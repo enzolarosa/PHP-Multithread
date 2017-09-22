@@ -14,32 +14,26 @@
  * See the GNU Lesser General Public License for more details.
  */
 
-/**
- * File:        Task.php
- * Project:     PHP Multi threading
- *
- * @author      Al-Fallouji Bashar
- */
-namespace Threading\Task;
+namespace enzolarosa\Threading\Task;
 
 /**
  * Abstract base inherited from all tasks
  */
-abstract class Base
+class Example extends Base
 {
     /**
-     * Initialize (called first by the task manager)
-     * 
+     * Initialize (called first by the task manager
+     *
      * @return mixed
      */
-    public function initialize() 
+    public function initialize()
     {
         return true;
     }
 
     /**
      * Called by the task manager upon sucess (when the process method returned true)
-     * 
+     *
      * @return mixed
      */
     public function onSuccess()
@@ -49,25 +43,25 @@ abstract class Base
 
     /**
      * Called by the task manager upon failure (when the process method returned false)
-     * 
+     *
      * @return mixed
      */
-    public function onFailure() 
+    public function onFailure()
     {
         return false;
     }
 
     /**
      * Main method containing the logic to be executed by the task
-     * 
+     *
      * @param $params array Assoc array of params
      *
      * @return boolean True upon success, false otherwise
      */
-    abstract public function process(array $params = array());
-
-    protected $param=array();
-    public function setParam($param) {
-        $this->param = $param;
+    public function process(array $params = array())
+    {
+        sleep(1);
+        echo '[Pid:' . getmypid() . '] Task executed at ' . date('Y-m-d H:i:s') . PHP_EOL;
+        return true;
     }
 }
